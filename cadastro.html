@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cadastro spam</title>
+    <link rel="stylesheet" href="styles-cadastro.css" />
+    <script type="text/javascript"></script>
+  </head>
+  <body>
+    <main>
+      <div class="tituloCadastro"></div>
+      <div class="formCadastro">
+        <form name="formCadastro" action="">
+          <h2>Vamos começar</h2>
+          <div class="input">
+            <input type="text" id="fnome" name="fnome" required />
+            <label>Nome</label>
+            <span class="error"></span>
+          </div>
+
+          <div class="input">
+            <input type="email" id="femail" name="femail" required />
+            <label>E-mail</label>
+            <span class="error"></span>
+          </div>
+
+          <div class="input">
+            <input
+              type="text"
+              id="fcpf"
+              name="fcpf"
+              oninput="mascaraCPF(this)"
+              onkeyup="setErrorCPF()"
+              maxlengh="14"
+              required
+            />
+            <label>CPF</label>
+            <span class="error"></span>
+          </div>
+
+          <div class="input">
+            <input
+              type="text"
+              onblur="mascaraTelefone(this)"
+              id="fnumero"
+              name="fnumero"
+              onkeydown="setErrorTelefone()"
+              maxlengh="11"
+              required
+            />
+            <label>Telefone</label>
+            <span class="error"></span>
+          </div>
+
+          <div class="input">
+            <input type="text" id="furlgit" name="furlgit" required />
+            <label>Url github</label>
+            <span class="error"></span>
+            <br />
+          </div>
+
+          <div class="buttonHolder">
+            <button type="submit" onclick="">
+              Me pertube ❤️
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+  <script src="js/cadastro.js"></script>
+</html>

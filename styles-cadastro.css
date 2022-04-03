@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url(images/background-blurry-gradient.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.tituloCadastro {
+  margin-bottom: 2rem;
+  color: #FFFFFF;
+}
+
+form {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 32px auto;
+  padding: 32px 64px;
+  display: flex;
+  flex-direction: column;
+}
+
+form h2 {
+  color: #FFFFFF;
+  margin-bottom: 32px;
+
+}
+
+div.input {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+input, button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 100%;
+
+  padding: 16px 0;
+
+  border: none;
+  border-bottom:  1px solid rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  outline: none;
+
+  color: rgb(255, 255, 255);
+  font-size: 1em;
+}
+
+button {
+  background-color: #0f5830;
+  color: #FFFFFF;
+  border-bottom: 0px solid black;
+}
+
+input ~ label {
+  position: absolute;
+  top: 16px;
+  left: 0;
+
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.4s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  transform: translateY(-24px);
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+}
+
+.input span.error {
+  display: flex;
+
+  padding: 0;
+
+  background-color: rgba(255, green, blue, 0.2);
+}
+
+.input span.error.active {
+  border: 3px solid red;
+  padding: 0.4em;
+  color: #FFFFFF;
+  background: red;
+}
+
+
+input::placeholder
+{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

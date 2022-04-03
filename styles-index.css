@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url(images/background-blurry-gradient.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  display: block;
+  place-items: center;
+}
+
+main {
+  width: auto;
+  height: auto;
+}
+
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.subtitulo {
+  padding: 1rem;
+}
+
+.description {
+  padding: 2rem;
+}
+
+.botao {
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+  padding: 1rem 3rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 1rem 0.5rem;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.botao1 {
+  background-color: #008731;
+  color: #ffffff;
+  border: 0.2rem solid #008731;
+}
+
+.botao1:hover {
+  background-color: #ffffff;
+  color: #008731;
+}
