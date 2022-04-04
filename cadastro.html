@@ -13,13 +13,25 @@
         <form name="formCadastro" action="">
           <h2>Vamos começar</h2>
           <div class="input">
-            <input type="text" id="fnome" name="fnome" required />
+            <input
+              type="text"
+              id="fnome"
+              name="fnome"
+              onblur="setErroNome()"
+              required
+            />
             <label>Nome</label>
             <span class="error"></span>
           </div>
 
           <div class="input">
-            <input type="email" id="femail" name="femail" required />
+            <input
+              type="email"
+              id="femail"
+              name="femail"
+              onblur="setErroEmail()"
+              required
+            />
             <label>E-mail</label>
             <span class="error"></span>
           </div>
@@ -30,7 +42,8 @@
               id="fcpf"
               name="fcpf"
               oninput="mascaraCPF(this)"
-              onkeyup="setErrorCPF()"
+              onkeyup="setErrorCPFOnKeyUp()"
+              onblur="setErrorCPFOnBlur()"
               maxlengh="14"
               required
             />
@@ -41,10 +54,10 @@
           <div class="input">
             <input
               type="text"
-              onblur="mascaraTelefone(this)"
+              oninput="mascaraTelefone(this)"
               id="fnumero"
               name="fnumero"
-              onkeydown="setErrorTelefone()"
+              onblur="setErrorTelefone()"
               maxlengh="11"
               required
             />
@@ -53,16 +66,21 @@
           </div>
 
           <div class="input">
-            <input type="text" id="furlgit" name="furlgit" required />
+            <input
+              type="url"
+              id="furlgit"
+              name="furlgit"
+              onblur="validarGitUrl()"
+              pattern="https://github.com/.*"
+              required
+            />
             <label>Url github</label>
             <span class="error"></span>
             <br />
           </div>
 
           <div class="buttonHolder">
-            <button type="submit" onclick="">
-              Me pertube ❤️
-            </button>
+            <button type="submit">Me pertube ❤️</button>
           </div>
         </form>
       </div>
