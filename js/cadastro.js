@@ -1,10 +1,31 @@
 const fields = document.querySelectorAll('[required]')
 
-for( field of fields ){
-  field.addEventListener("invalid", event => { 
-      // eliminar o bubble
-      event.preventDefault() 
+for (field of fields) {
+  field.addEventListener('invalid', event => {
+    // eliminar o bubble
+    event.preventDefault()
   })
+}
+
+function mePertube() {
+  var status
+  var spanError
+  for (field of fields) {
+    if (field.validity.valueMissing) {
+      spanError = field.parentNode.querySelector('span.error')
+      spanError.classList.add('active')
+      spanError.innerHTML = 'Preenchimento obrigatório!'
+    }
+  }
+  if (
+    fields[0].validity.valid &&
+    fields[1].validity.valid &&
+    fields[2].validity.valid &&
+    fields[3].validity.valid &&
+    fields[4].validity.valid
+  ) {
+    alert('Obrigado ' + fields[0].value)
+  }
 }
 
 function setErroNome() {
@@ -47,9 +68,12 @@ function setErrorCPFOnKeyUp() {
 
 function setErrorCPFOnBlur() {
   const spanError = fields[2].parentNode.querySelector('span.error')
-  if (fields[2].value.length < 14) {
+  if (fields[2].value.length < 14 && fields[2].value.length > 0) {
     spanError.classList.add('active')
     spanError.innerHTML = 'CPF incompleto!'
+  } else if (fields[2].value.length == 0) {
+    spanError.classList.add('active')
+    spanError.innerHTML = 'Preenchimento obrigatório!'
   }
 }
 
@@ -67,37 +91,26 @@ function mascaraCPF(i) {
   if (v.length == 11) i.value += '-'
 }
 
-function validarGitUrl() {
-  const spanError = fields[4].parentNode.querySelector('span.error')
-  if (fields[4].validity.valueMissing) {
-    spanError.classList.add('active')
-    spanError.innerHTML = 'Preenchimento obrigatório!'
-  } else if (fields[4].validity.typeMismatch) {
-    spanError.classList.add('active')
-    spanError.innerHTML = 'URL invalida!'
-  } else if (fields[4].validity.patternMismatch) {
-    spanError.classList.add('active')
-    spanError.innerHTML = 'Não é uma url do GitHub'
-  } else {
-    spanError.classList.remove('active')
-    spanError.innerHTML = ''
-  }
-}
-
 function setErrorTelefone() {
   const spanError = fields[3].parentNode.querySelector('span.error')
-  if (fields[3].value.length == 11 || fields[3].value.length == 10) {
-    if (fields[3].value.length < 9) {
+  if (
+    removeCaracteres(fields[3].value).length == 11 ||
+    removeCaracteres(fields[3].value).length == 10
+  ) {
+    if (removeCaracteres(fields[3].value).length < 9) {
       spanError.classList.add('active')
       spanError.innerHTML = 'Numero invalido'
     } else {
       spanError.classList.remove('active')
       spanError.innerHTML = ''
     }
-  } else if (fields[3].value.length < 11 && fields[3].value.length > 0) {
+  } else if (
+    removeCaracteres(fields[3].value).length < 11 &&
+    removeCaracteres(fields[3].value).length > 0
+  ) {
     spanError.classList.add('active')
     spanError.innerHTML = 'Telefone incompleto!'
-  } else if (fields[3].value.length == 0) {
+  } else if (removeCaracteres(fields[3].value).length == 0) {
     spanError.classList.add('active')
     spanError.innerHTML = 'Preenchimento obrigatório!'
   } else {
@@ -128,10 +141,44 @@ function mascaraTelefone(i) {
   if (!isMovel) {
     if (v.length == 9) i.value += '-'
   }
+
+  if (removeCaracteres(v).length == 11 || removeCaracteres(v).length == 10) {
+    setErrorTelefone()
+  }
+}
+
+function validarGitUrl() {
+  const spanError = fields[4].parentNode.querySelector('span.error')
+  if (fields[4].validity.valueMissing) {
+    spanError.classList.add('active')
+    spanError.innerHTML = 'Preenchimento obrigatório!'
+  } else if (fields[4].validity.typeMismatch) {
+    spanError.classList.add('active')
+    spanError.innerHTML = 'URL invalida!'
+  } else if (fields[4].validity.patternMismatch) {
+    spanError.classList.add('active')
+    spanError.innerHTML = 'Não é uma url do GitHub'
+  } else {
+    spanError.classList.remove('active')
+    spanError.innerHTML = ''
+  }
+}
+
+function validarGitUrlOnKeuUp() {
+  const spanError = fields[4].parentNode.querySelector('span.error')
+  if (!fields[4].validity.typeMismatch || !fields[4].validity.patternMismatch) {
+    spanError.classList.remove('active')
+    spanError.innerHTML = ''
+  }
 }
 
 function removeCaracteres(str) {
   const textAjustado = str.replace(/[^\w\s]/gi, '')
+  return removeEspaco(textAjustado)
+}
+
+function removeEspaco(str) {
+  const textAjustado = str.replace(/\s/g, '')
   return textAjustado
 }
 
