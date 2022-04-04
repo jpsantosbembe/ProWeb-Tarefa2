@@ -71,6 +71,7 @@
               id="furlgit"
               name="furlgit"
               onblur="validarGitUrl()"
+              onkeyup="validarGitUrlOnKeuUp()"
               pattern="https://github.com/.*"
               required
             />
@@ -80,7 +81,7 @@
           </div>
 
           <div class="buttonHolder">
-            <button type="submit">Me pertube ❤️</button>
+            <button type="submit" onclick="mePertube()">Me pertube ❤️</button>
           </div>
         </form>
       </div>
